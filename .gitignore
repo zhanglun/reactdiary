@@ -1,5 +1,5 @@
 **/node_modules/**
-**/.modules_cache/**
+.module_cache
 
 *.~
 *.swp
