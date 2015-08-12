@@ -47,8 +47,7 @@ var Task = React.createClass({displayName: "Task",
         return (
             React.createElement("li", {className: "task-item"}, 
                 React.createElement("p", null, 
-                    this.props.title, 
-                    React.createElement("span", {className: "due-date"}, this.props.date)
+                    "This is a task;"
                 )
             )
         );

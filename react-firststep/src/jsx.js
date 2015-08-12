@@ -1,5 +1,5 @@
 var MyComponent = React.createClass({
-    render: function(){
+    render: function () {
         return (
             <div className="contaienr">
                 <h1 className="title">This is the Title {this.props.data.toString()}</h1>
@@ -11,7 +11,7 @@ var MyComponent = React.createClass({
 
 
 var ListPanel = React.createClass({
-    render: function() {
+    render: function () {
         return (
             <div className="list-panel">
                 <TaskList />
@@ -21,8 +21,8 @@ var ListPanel = React.createClass({
 });
 
 var TaskList = React.createClass({
-    render: function(){
-        var taskNodes = [1,2,3,4,5,6].map(function(){
+    render: function () {
+        var taskNodes = [1, 2, 3, 4, 5, 6].map(function () {
             return (
                 <Task />
             );
@@ -37,17 +37,24 @@ var TaskList = React.createClass({
     }
 });
 var Task = React.createClass({
-    render: function(){
+    getDefaultProps: function () {
+        return {
+            title: 'This is the Task title',
+            date: new Date().getTime()
+        }
+    },
+    render: function () {
         return (
             <li className="task-item">
                 <p>
-                    This is a task;
+                    {this.props.title}
+                    <span className="due-date">{this.props.date}</span>
                 </p>
             </li>
         );
     }
 });
 
-React.render(<ListPanel data={new Date()} /> , document.getElementById('container'));
+React.render(<ListPanel data={new Date()}/>, document.getElementById('container'));
 
 

@@ -1,5 +1,5 @@
 var MyComponent = React.createClass({displayName: "MyComponent",
-    render: function () {
+    render: function(){
         return (
             React.createElement("div", {className: "contaienr"}, 
                 React.createElement("h1", {className: "title"}, "This is the Title ", this.props.data.toString())
@@ -11,7 +11,7 @@ var MyComponent = React.createClass({displayName: "MyComponent",
 
 
 var ListPanel = React.createClass({displayName: "ListPanel",
-    render: function () {
+    render: function() {
         return (
             React.createElement("div", {className: "list-panel"}, 
                 React.createElement(TaskList, null)
@@ -21,8 +21,8 @@ var ListPanel = React.createClass({displayName: "ListPanel",
 });
 
 var TaskList = React.createClass({displayName: "TaskList",
-    render: function () {
-        var taskNodes = [1, 2, 3, 4, 5, 6].map(function () {
+    render: function(){
+        var taskNodes = [1,2,3,4,5,6].map(function(){
             return (
                 React.createElement(Task, null)
             );
@@ -37,24 +37,17 @@ var TaskList = React.createClass({displayName: "TaskList",
     }
 });
 var Task = React.createClass({displayName: "Task",
-    getDefaultProps: function () {
-        return {
-            title: 'This is the Task title',
-            date: new Date().getTime()
-        }
-    },
-    render: function () {
+    render: function(){
         return (
             React.createElement("li", {className: "task-item"}, 
                 React.createElement("p", null, 
-                    this.props.title, 
-                    React.createElement("span", {className: "due-date"}, this.props.date)
+                    "This is a task;"
                 )
             )
         );
     }
 });
 
-React.render(React.createElement(ListPanel, {data: new Date()}), document.getElementById('container'));
+React.render(React.createElement(ListPanel, {data: new Date()}) , document.getElementById('container'));
 
 
