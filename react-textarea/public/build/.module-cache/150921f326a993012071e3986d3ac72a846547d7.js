@@ -82,5 +82,5 @@ var WriterController = React.createClass({displayName: "WriterController",
 
 React.render(
     React.createElement(App, null),
-    document.body
+    document.getElementById('container')
 );

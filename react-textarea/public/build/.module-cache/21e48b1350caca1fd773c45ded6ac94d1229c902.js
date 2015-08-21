@@ -18,20 +18,22 @@ var LikeButton = React.createClass({displayName: "LikeButton",
 });
 
 var App = React.createClass({displayName: "App",
-    render: function () {
+    render: function(){
         return (
             React.createElement("div", {id: "app"}, 
                 React.createElement("aside", null, 
-                    React.createElement(TreeView, null)
+                   React.createElement(TreeView, null)
                 ), 
-                React.createElement(Writer, null)
+                React.createElement("div", {className: "main"}, 
+                    React.createElement(Writer, null)
+                )
             )
         );
     }
 });
 
 var TreeView = React.createClass({displayName: "TreeView",
-    render: function () {
+    render: function(){
         return (
             React.createElement("ul", null, 
                 React.createElement("li", null, "Tree 1"), 
@@ -70,7 +72,7 @@ var WriterInputer = React.createClass({displayName: "WriterInputer",
 });
 
 var WriterController = React.createClass({displayName: "WriterController",
-    render: function () {
+    render: function(){
         return (
             React.createElement("div", {className: "writer-controller"}, 
                 React.createElement("button", null, "保存")
@@ -80,7 +82,8 @@ var WriterController = React.createClass({displayName: "WriterController",
 });
 
 
+
 React.render(
     React.createElement(App, null),
-    document.body
+    document.getElementById('container')
 );
