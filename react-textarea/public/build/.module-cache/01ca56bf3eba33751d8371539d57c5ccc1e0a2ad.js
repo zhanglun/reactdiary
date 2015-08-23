@@ -24,7 +24,7 @@ var TreeView = React.createClass({displayName: "TreeView",
             return false;
         }
 
-        //console.log(target.innerHTML);
+        console.log(target.innerHTML);
         target.innerHTML = this.state.currentTheme;
     },
     render: function () {
@@ -52,17 +52,11 @@ var EditableBox = React.createClass({displayName: "EditableBox",
             val: 'This is the val'
         }
     },
-    clickToEdit: function(e){
-        //console.log(e.target.innerHTML);
-        this.setState({isEdit: true}, function(){
-            console.log(this.state.isEdit);
-            this.refs.editbox.getDOMNode().classList.add('isediting');
-        });
-    },
     render: function () {
+        var isEditing = this.state.isEdit? 'isEditing':'';
         return (
-            React.createElement("div", {className: "editbox", onDoubleClick: this.clickToEdit, ref: "editbox"}, 
-                React.createElement("div", {"data-val": this.state.val}, this.state.val), 
+            React.createElement("div", {class: "{isEditing}"}, 
+                React.createElement("div", {"data-val": "{this.state.val}"}, this.state.val), 
                 React.createElement("input", {type: "text"})
             )
         );

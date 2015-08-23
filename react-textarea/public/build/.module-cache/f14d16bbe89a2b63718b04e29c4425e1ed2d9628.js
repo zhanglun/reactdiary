@@ -11,63 +11,25 @@ var App = React.createClass({displayName: "App",
     }
 });
 
-
 var TreeView = React.createClass({displayName: "TreeView",
-    getInitialState: function () {
-        return {
-            currentTheme: 'Fxxk!!'
-        }
-    },
     intoInsertMode: function (e) {
         var target = e.target;
         if (target.tagName.toLowerCase() !== 'li') {
             return false;
         }
 
-        //console.log(target.innerHTML);
-        target.innerHTML = this.state.currentTheme;
+        console.log(target.innerHTML);
+        this.props.currentTheme = target.innerHTML;
     },
     render: function () {
-        var themeid = this.state.currentTheme;
-        var list = [1,2,3,4].map(function () {
-            return (
-                React.createElement("li", null, 
-                    React.createElement(EditableBox, null)
-                )
-            );
-        });
+        var themeid = this.props.currentTime;
+
         return (
-            React.createElement("ul", {onDoubleClick: this.intoInsertMode}, 
-                list
-            )
+            React.createElement("p", null, themeid)
         );
     }
 });
 
-
-var EditableBox = React.createClass({displayName: "EditableBox",
-    getInitialState: function () {
-        return {
-            isEdit: false,
-            val: 'This is the val'
-        }
-    },
-    clickToEdit: function(e){
-        //console.log(e.target.innerHTML);
-        this.setState({isEdit: true}, function(){
-            console.log(this.state.isEdit);
-            this.refs.editbox.getDOMNode().classList.add('isediting');
-        });
-    },
-    render: function () {
-        return (
-            React.createElement("div", {className: "editbox", onDoubleClick: this.clickToEdit, ref: "editbox"}, 
-                React.createElement("div", {"data-val": this.state.val}, this.state.val), 
-                React.createElement("input", {type: "text"})
-            )
-        );
-    }
-});
 
 var Writer = React.createClass({displayName: "Writer",
     getInitialState: function () {
@@ -88,7 +50,7 @@ var Writer = React.createClass({displayName: "Writer",
 
 // Writer Header
 var WriterHeader = React.createClass({displayName: "WriterHeader",
-    render: function () {
+    render: function(){
         return (
             React.createElement("div", {className: "writer-header"}, 
                 "This is the header! ", this.props.header

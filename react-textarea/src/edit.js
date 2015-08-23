@@ -11,19 +11,63 @@ var App = React.createClass({
     }
 });
 
+
 var TreeView = React.createClass({
+    getInitialState: function () {
+        return {
+            currentTheme: 'Fxxk!!'
+        }
+    },
+    intoInsertMode: function (e) {
+        var target = e.target;
+        if (target.tagName.toLowerCase() !== 'li') {
+            return false;
+        }
+
+        //console.log(target.innerHTML);
+        target.innerHTML = this.state.currentTheme;
+    },
     render: function () {
+        var themeid = this.state.currentTheme;
+        var list = [1,2,3,4].map(function () {
+            return (
+                <li>
+                    <EditableBox />
+                </li>
+            );
+        });
         return (
-            <ul>
-                <li>Tree 1</li>
-                <li>Tree 2</li>
-                <li>Tree 3</li>
-                <li>Tree 4</li>
+            <ul onDoubleClick={this.intoInsertMode}>
+                {list}
             </ul>
         );
     }
 });
 
+
+var EditableBox = React.createClass({
+    getInitialState: function () {
+        return {
+            isEdit: false,
+            val: 'This is the val'
+        }
+    },
+    clickToEdit: function(e){
+        //console.log(e.target.innerHTML);
+        this.setState({isEdit: true}, function(){
+            console.log(this.state.isEdit);
+            this.refs.editbox.getDOMNode().classList.add('isediting');
+        });
+    },
+    render: function () {
+        return (
+            <div className="editbox" onDoubleClick={this.clickToEdit} ref="editbox">
+                <div data-val={this.state.val}>{this.state.val}</div>
+                <input type="text"/>
+            </div>
+        );
+    }
+});
 
 var Writer = React.createClass({
     getInitialState: function () {
@@ -34,8 +78,20 @@ var Writer = React.createClass({
     render: function () {
         return (
             <div className="writerbox">
+                <WriterHeader header={'THEME1'}></WriterHeader>
                 <WriterInputer></WriterInputer>
                 <WriterController></WriterController>
+            </div>
+        );
+    }
+});
+
+// Writer Header
+var WriterHeader = React.createClass({
+    render: function () {
+        return (
+            <div className="writer-header">
+                This is the header! {this.props.header}
             </div>
         );
     }

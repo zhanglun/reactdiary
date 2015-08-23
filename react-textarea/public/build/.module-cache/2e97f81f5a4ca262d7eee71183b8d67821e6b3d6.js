@@ -24,20 +24,18 @@ var TreeView = React.createClass({displayName: "TreeView",
             return false;
         }
 
-        //console.log(target.innerHTML);
+        console.log(target.innerHTML);
         target.innerHTML = this.state.currentTheme;
     },
     render: function () {
         var themeid = this.state.currentTheme;
         var list = [1,2,3,4].map(function () {
             return (
-                React.createElement("li", null, 
-                    React.createElement(EditableBox, null)
-                )
+                React.createElement(EditableBox, null)
             );
         });
         return (
-            React.createElement("ul", {onDoubleClick: this.intoInsertMode}, 
+            React.createElement("div", {onDoubleClick: this.intoInsertMode}, 
                 list
             )
         );
@@ -52,17 +50,10 @@ var EditableBox = React.createClass({displayName: "EditableBox",
             val: 'This is the val'
         }
     },
-    clickToEdit: function(e){
-        //console.log(e.target.innerHTML);
-        this.setState({isEdit: true}, function(){
-            console.log(this.state.isEdit);
-            this.refs.editbox.getDOMNode().classList.add('isediting');
-        });
-    },
     render: function () {
         return (
-            React.createElement("div", {className: "editbox", onDoubleClick: this.clickToEdit, ref: "editbox"}, 
-                React.createElement("div", {"data-val": this.state.val}, this.state.val), 
+            React.createElement("div", {class: ""}, 
+                React.createElement("div", {"data-val": "{this.state.val}"}, this.state.val), 
                 React.createElement("input", {type: "text"})
             )
         );

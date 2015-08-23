@@ -56,12 +56,12 @@ var EditableBox = React.createClass({displayName: "EditableBox",
         //console.log(e.target.innerHTML);
         this.setState({isEdit: true}, function(){
             console.log(this.state.isEdit);
-            this.refs.editbox.getDOMNode().classList.add('isediting');
+            this.refs.editbox.getDOMNode().className = 'isEditing';
         });
     },
     render: function () {
         return (
-            React.createElement("div", {className: "editbox", onDoubleClick: this.clickToEdit, ref: "editbox"}, 
+            React.createElement("div", {onClick: this.clickToEdit, ref: "editbox"}, 
                 React.createElement("div", {"data-val": this.state.val}, this.state.val), 
                 React.createElement("input", {type: "text"})
             )

@@ -56,7 +56,7 @@ var EditableBox = React.createClass({displayName: "EditableBox",
         //console.log(e.target.innerHTML);
         this.setState({isEdit: true}, function(){
             console.log(this.state.isEdit);
-            this.refs.editbox.getDOMNode().classList.add('isediting');
+            this.refs.editbox.getDOMNode().classList.add('isEditing');
         });
     },
     render: function () {
