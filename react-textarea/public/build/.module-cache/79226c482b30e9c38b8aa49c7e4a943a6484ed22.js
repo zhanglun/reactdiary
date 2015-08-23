@@ -29,9 +29,9 @@ var TreeView = React.createClass({displayName: "TreeView",
     },
     render: function () {
         var themeid = this.state.currentTheme;
-        var list = [1, 2, 3, 4].map(function () {
+        var list = [1,2,3,4].map(function () {
             return (
-                React.createElement(EditableBox, null)
+                    React.createElement(EditableBox, null)
             );
         });
         return (
@@ -50,38 +50,18 @@ var EditableBox = React.createClass({displayName: "EditableBox",
             val: 'This is the val'
         }
     },
-    clickToEdit: function (e) {
+    clickToEdit: function(e){
         //console.log(e.target.innerHTML);
-        this.setState({isEdit: true}, function () {
+        this.setState({isEdit: true}, function(){
             console.log(this.state.isEdit);
             this.refs.editbox.getDOMNode().classList.add('isediting');
-            this.refs.theInput.getDOMNode().focus();
         });
-    },
-    editDone: function (e) {
-        this.setState({val: e.target.value, isEdit: false}, function () {
-            this.refs.editbox.getDOMNode().classList.remove('isediting');
-        });
-    },
-    editInputing: function (e) {
-        this.setState({val: e.target.value});
-    },
-    pressKeyEnter: function (e) {
-        if (e.keyCode !== 13) {
-            return false;
-        }
-
-        this.refs.editbox.getDOMNode().classList.remove('isediting');
-        this.refs.theInput.getDOMNode().blur();
     },
     render: function () {
-        var val = this.state.val;
         return (
             React.createElement("div", {className: "editbox", onDoubleClick: this.clickToEdit, ref: "editbox"}, 
                 React.createElement("div", {"data-val": this.state.val}, this.state.val), 
-                React.createElement("input", {ref: "theInput", type: "text", value: this.state.val, onKeyUp: this.pressKeyEnter, 
-                       onChange: this.editInputing, onBlur: this.editDone})
-
+                React.createElement("input", {type: "text", value: this.state.val})
             )
         );
     }

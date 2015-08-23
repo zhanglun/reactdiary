@@ -59,28 +59,23 @@ var EditableBox = React.createClass({displayName: "EditableBox",
         });
     },
     editDone: function (e) {
-        this.setState({val: e.target.value, isEdit: false}, function () {
+        this.setState({val: e.target.value, isEdit:false}, function(){
             this.refs.editbox.getDOMNode().classList.remove('isediting');
         });
     },
-    editInputing: function (e) {
+    editInputing: function(e){
         this.setState({val: e.target.value});
-    },
-    pressKeyEnter: function (e) {
-        if (e.keyCode !== 13) {
-            return false;
-        }
-
-        this.refs.editbox.getDOMNode().classList.remove('isediting');
-        this.refs.theInput.getDOMNode().blur();
+        console.log(e);
+        //if(e.keyCode == ){
+        //
+        //}
     },
     render: function () {
         var val = this.state.val;
         return (
             React.createElement("div", {className: "editbox", onDoubleClick: this.clickToEdit, ref: "editbox"}, 
                 React.createElement("div", {"data-val": this.state.val}, this.state.val), 
-                React.createElement("input", {ref: "theInput", type: "text", value: this.state.val, onKeyUp: this.pressKeyEnter, 
-                       onChange: this.editInputing, onBlur: this.editDone})
+                React.createElement("input", {ref: "theInput", type: "text", value: this.state.val, onKeyPress: this.pressEnter, onChange: this.editInputing, onBlur: this.editDone})
 
             )
         );

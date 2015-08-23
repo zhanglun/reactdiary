@@ -67,12 +67,10 @@ var EditableBox = React.createClass({displayName: "EditableBox",
         this.setState({val: e.target.value});
     },
     pressKeyEnter: function (e) {
-        if (e.keyCode !== 13) {
-            return false;
+        if (e.keyCode == 13) {
+            this.refs.editbox.getDOMNode().classList.remove('isediting');
+            this.refs.theInput.getDOMNode().blur();
         }
-
-        this.refs.editbox.getDOMNode().classList.remove('isediting');
-        this.refs.theInput.getDOMNode().blur();
     },
     render: function () {
         var val = this.state.val;
