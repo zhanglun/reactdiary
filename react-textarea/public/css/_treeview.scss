@@ -40,16 +40,18 @@ aside {
 $editbox-height: 30px;
 
 .modify {
+  width: 100%;
   box-sizing: border-box;
   height: $editbox-height;
   line-height: $editbox-height;
-  padding: 4px;
+  padding: 0 4px;
 }
 
 .editbox {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   box-sizing: border-box;
   font-size: 16px;
+  padding: 4px 0;
   > div {
     @extend .modify;
   }
