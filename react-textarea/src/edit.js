@@ -69,6 +69,8 @@ var EditableBox = React.createClass({
     pressKeyEnter: function (e) {
         if (e.keyCode !== 13) {
             return false;
+            e.stopPropagation();
+            e.preventDefault();
         }
 
         this.refs.editbox.getDOMNode().classList.remove('isediting');

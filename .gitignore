@@ -1,7 +1,6 @@
 **/node_modules/**
-react-comment/public/build/.module_cache/*
-react-firststep/public/build/.module_cache/*
-
+**/.module-cache/**
+**/.sass-cache/**
 *.~
 *.swp
 
