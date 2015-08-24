@@ -1,11 +1,16 @@
 var App = React.createClass({
+    getInitialState: function () {
+        return {
+            currentTheme: 'THEME1'
+        }
+    },
     render: function () {
         return (
             <div id="app">
                 <aside>
-                    <TreeView />
+                    <TreeView theme={this.state.currentTheme}/>
                 </aside>
-                <Writer />
+                <Writer theme={this.state.currentTheme}/>
             </div>
         );
     }
@@ -15,7 +20,7 @@ var App = React.createClass({
 var TreeView = React.createClass({
     getInitialState: function () {
         return {
-            currentTheme: 'Fxxk!!'
+            currentTheme: this.props.theme
         }
     },
     intoInsertMode: function (e) {
@@ -28,7 +33,6 @@ var TreeView = React.createClass({
         target.innerHTML = this.state.currentTheme;
     },
     render: function () {
-        var themeid = this.state.currentTheme;
         var list = [1, 2, 3, 4].map(function () {
             return (
                 <EditableBox />
@@ -50,8 +54,7 @@ var EditableBox = React.createClass({
             val: 'This is the val'
         }
     },
-    clickToEdit: function (e) {
-        //console.log(e.target.innerHTML);
+    clickToEdit: function () {
         this.setState({isEdit: true}, function () {
             console.log(this.state.isEdit);
             this.refs.editbox.getDOMNode().classList.add('isediting');
@@ -77,7 +80,6 @@ var EditableBox = React.createClass({
         this.refs.theInput.getDOMNode().blur();
     },
     render: function () {
-        var val = this.state.val;
         return (
             <div className="editbox" onDoubleClick={this.clickToEdit} ref="editbox">
                 <div data-val={this.state.val}>{this.state.val}</div>
@@ -92,13 +94,14 @@ var EditableBox = React.createClass({
 var Writer = React.createClass({
     getInitialState: function () {
         return {
+            currentTheme: this.props.theme,
             placeholder: 'Typing here...'
         }
     },
     render: function () {
         return (
             <div className="writerbox">
-                <WriterHeader header={'THEME1'}></WriterHeader>
+                <WriterHeader header={this.props.theme}></WriterHeader>
                 <WriterInputer></WriterInputer>
                 <WriterController></WriterController>
             </div>
