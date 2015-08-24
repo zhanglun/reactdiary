@@ -37,9 +37,28 @@ aside {
   display: none;
 }
 
+$editbox-height: 30px;
+
+.modify {
+  box-sizing: border-box;
+  height: $editbox-height;
+  line-height: $editbox-height;
+  padding: 4px;
+}
+
 .editbox {
-  >input{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  font-size: 16px;
+  > div {
+    @extend .modify;
+  }
+  > input {
+    @extend .modify;
+    border: none;
     display: none;
+    outline: none;
+    font-size: 16px;
   }
   &.isediting {
     > div {
@@ -50,4 +69,5 @@ aside {
     }
   }
 }
+
 

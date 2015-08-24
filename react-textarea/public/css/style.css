@@ -30,11 +30,24 @@ aside {
 .hidden {
   display: none; }
 
-.editbox > input {
-  display: none; }
-.editbox.isediting > div {
-  display: none; }
-.editbox.isediting > input {
-  display: block; }
+.modify, .editbox > div, .editbox > input {
+  box-sizing: border-box;
+  height: 30px;
+  line-height: 30px;
+  padding: 4px; }
+
+.editbox {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  font-size: 16px; }
+  .editbox > input {
+    border: none;
+    display: none;
+    outline: none;
+    font-size: 16px; }
+  .editbox.isediting > div {
+    display: none; }
+  .editbox.isediting > input {
+    display: block; }
 
 /*# sourceMappingURL=style.css.map */
