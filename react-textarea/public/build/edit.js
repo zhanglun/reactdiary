@@ -80,8 +80,13 @@ var EditableBox = React.createClass({displayName: "EditableBox",
         this.refs.theInput.getDOMNode().blur();
     },
     render: function () {
+        var id = Math.random() *100 +20;
         return (
             React.createElement("div", {className: "editbox", onDoubleClick: this.clickToEdit, ref: "editbox"}, 
+                React.createElement("div", {className: "checkbox"}, 
+                    React.createElement("input", {type: "checkbox", name: "", id: id}), 
+                    React.createElement("label", null)
+                ), 
                 React.createElement("div", {"data-val": this.state.val}, this.state.val), 
                 React.createElement("input", {ref: "theInput", type: "text", value: this.state.val, onKeyUp: this.pressKeyEnter, 
                        onChange: this.editInputing, onBlur: this.editDone})
