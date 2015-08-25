@@ -52,15 +52,12 @@ aside {
   .editbox.isediting > input {
     display: block; }
 
-.checkbox > input[type=checkbox] {
-  display: none; }
-  .checkbox > input[type=checkbox] + label::before {
-    content: '11';
-    display: block;
-    width: 12px;
-    height: 12px;
-    border: 1px solid #d4d4d4; }
-  .checkbox > input[type=checkbox]:checked + label::before {
-    content: '22'; }
+.checkbox > input[type=checkbox] + label::before {
+  content: '11';
+  width: 12px;
+  height: 12px;
+  border: 1px solid #d4d4d4; }
+.checkbox > input[type=checkbox]:checked + label::before {
+  content: '22'; }
 
 /*# sourceMappingURL=style.css.map */

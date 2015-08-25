@@ -85,7 +85,7 @@ var EditableBox = React.createClass({
             <div className="editbox" onDoubleClick={this.clickToEdit} ref="editbox">
                 <div className="checkbox">
                     <input type="checkbox" name="" id=id />
-                    <label for="asdfadsf"></label>
+                    <label htmlFor='1111'></label>
                 </div>
                 <div data-val={this.state.val}>{this.state.val}</div>
                 <input ref="theInput" type="text" value={this.state.val} onKeyUp={this.pressKeyEnter}

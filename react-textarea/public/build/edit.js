@@ -84,8 +84,8 @@ var EditableBox = React.createClass({displayName: "EditableBox",
         return (
             React.createElement("div", {className: "editbox", onDoubleClick: this.clickToEdit, ref: "editbox"}, 
                 React.createElement("div", {className: "checkbox"}, 
-                    React.createElement("input", {type: "checkbox", name: "", id: id}), 
-                    React.createElement("label", null)
+                    React.createElement("input", {type: "checkbox", name: "", id: "1"}), 
+                    React.createElement("label", {for: ""})
                 ), 
                 React.createElement("div", {"data-val": this.state.val}, this.state.val), 
                 React.createElement("input", {ref: "theInput", type: "text", value: this.state.val, onKeyUp: this.pressKeyEnter, 
