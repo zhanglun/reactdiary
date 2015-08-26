@@ -80,12 +80,12 @@ var EditableBox = React.createClass({
         this.refs.theInput.getDOMNode().blur();
     },
     render: function () {
-        var id = Math.random() *100 +20;
+        var id = Math.random() * 100 + 20;
         return (
             <div className="editbox" onDoubleClick={this.clickToEdit} ref="editbox">
                 <div className="checkbox">
-                    <input type="checkbox" name="" id=id />
-                    <label htmlFor='1111'></label>
+                    <input type="checkbox" name="" id={id}/>
+                    <label htmlFor={id}></label>
                 </div>
                 <div data-val={this.state.val}>{this.state.val}</div>
                 <input ref="theInput" type="text" value={this.state.val} onKeyUp={this.pressKeyEnter}

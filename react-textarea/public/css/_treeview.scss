@@ -10,7 +10,6 @@ html, body, #app {
 aside {
   width: 200px;
   float: left;
-  background-color: #d4d4d4;
 }
 
 .writerbox {
@@ -53,11 +52,12 @@ $editbox-height: 30px;
   font-size: 16px;
   padding: 4px 0;
   > div {
+    @extend .dib;
     @extend .modify;
   }
   > input {
     @extend .modify;
-    border: none;
+    border: 1px solid #d4d4d4;
     display: none;
     outline: none;
     font-size: 16px;
@@ -67,23 +67,37 @@ $editbox-height: 30px;
       display: none;
     }
     > input {
-      display: block;
+      @extend .dib;
     }
   }
 }
 
+.dib {
+  display: inline-block;
+}
+
 .checkbox {
+  @extend .dib;
+  width:20px;
   > input[type=checkbox] {
-    //display: none;
-    & + label::before {
-      content: '11';
-      //display: block;
-      width: 12px;
-      height: 12px;
+    display: none;
+    & + label {
+      display: block;
+      width: 14px;
+      height: 14px;
+      font-size: 14px;
+      text-align: center;
+      line-height: 14px;
       border: 1px solid #d4d4d4;
     }
-    &:checked + label::before{
-      content: '22';
+    & + label::before {
+      content: '🐶';
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    &:checked + label::before {
+      content: '🐔';
     }
   }
 }
