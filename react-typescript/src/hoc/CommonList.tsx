@@ -1,7 +1,13 @@
 import React from 'react'
+import { Comment } from "./Comment"
+const DataSource = {
+  getComments: () => {},
+  addChangeListener: (id: any) => {},
+  removeChangeListener: (id: any) => {}
 
-class CommentList extends React.Component<any, any>{
-  constructor(props) {
+}
+class CommentList extends React.Component<any, any> {
+  constructor(props: any) {
     super(props);
 
     this.handleChange = this.handleChange.bind(this)
@@ -27,10 +33,12 @@ class CommentList extends React.Component<any, any>{
   render() {
     return (
       <div>
-        {this.state.comments.map((comment) => {
-          <Comment comment={comment} key={comment.id} />
-        }}
+        {this.state.comments.map((comment: any) => (
+          <Comment comment={comment} key={comment.id}/>
+        ))}
       </div>
     )
   }
 }
+
+export { CommentList }

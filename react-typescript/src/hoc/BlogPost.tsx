@@ -1,7 +1,14 @@
 import React from 'react'
 
+const DataSource = {
+  getBlogPost: (id: string) => {},
+  addChangeListener: (id: any) => {},
+  removeChangeListener: (id: any) => {}
+
+}
+
 class BlogPost extends React.Component<any, any> {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
 
     this.handleChange = this.handleChange.bind(this);
@@ -25,6 +32,10 @@ class BlogPost extends React.Component<any, any> {
   }
 
   render() {
-    return <TextBlock text={this.state.blogPost} />;
+    return (
+      <div>asdf</div>
+    )
   }
 }
+
+export { BlogPost }
